@@ -1,23 +1,21 @@
-# Guía rápida para utilizar ROS 2 (Jazzy Jalisco) en ubuntu 24.04.1
+# Guía para utilizar ROS 2 (Jazzy Jalisco) en ubuntu 24.04.1
 
-Antes de continuar con la configuración es necesario los pasos para instalar ROS 2
+Antes de continuar con la configuración es necesario realizar los pasos para instalar ROS 2
 ## 1. Configurando el entorno
 
  ### 1.1. Obtener los archivos de instalación
 
-**source:** Lee y ejecuta comandos de un archivo
+
 
 Para tener acceso a los comandos de ROS, cada vez que se abre una terminal es necesario ejecutar lo siguiente: 
 ```
 source /opt/ros/jazzy/setup.bash
 ```
 
-### 1.2 Agregar el source al startup script
-Añadir un string a un fichero
+### 1.2 Agregar el comando al startup script
 
-echo " " >> prueba.txt
 
-Para evitar lo anterior cada vez que se abre una terminal, es necesario agregar el mismo comando al startup script
+Para evitar lo anterior cada vez que se abre una terminal, es necesario agregar el mismo comando al startup script (``.bashrc``)
 
 ```
 echo "source /opt/ros/jazzy/setup.bash" >> ~/.bashrc
@@ -49,7 +47,129 @@ Para evitar incovenientes entre usuarios de ROS 2 conectados a una misma red, es
 echo "export ROS_DOMAIN_ID=<your_domain_id>" >> ~/.bashrc
 ```
 
-## 2. Herramientas esenciales en ROS 2
+
+## 2. Uso de ``colcon`` para construir paquetes
+
+### 2.1. Instalar colcon 
+```
+sudo apt install python3-colcon-common-extensions
+```
+
+### configurar ``colcon_cd`` 
+El comando ``colcon_cd``  permite dirigirse rápidamente a la raiz de la carpeta donde está el paquete creado desde la terminal, para ello ejecute los siguientes comandos, los cuales son agregados al archivo .bashrc
+
+```
+echo "source /usr/share/colcon_cd/function/colcon_cd.sh" >> ~/.bashrc
+```
+
+```
+echo "export _colcon_cd_root=/opt/ros/jazzy/" >> ~/.bashrc
+```
+
+
+## Crear un workspace
+
+Un workspace es un directorio que contiene los paquetes de ROS 2
+Primero es necesario crear un carpeta (``ros2_ws``) para contener el workspace, ejecutando los siguientes comandos:
+```
+mkdir -p ~/ros2_ws/src
+```
+
+```
+cd ~/ros2_ws
+```
+
+En este punto, la carpeta ``ros2_ws`` contiene solo una subcarpeta vacia ``src``
+
+### Clonar un repositorio de muestra
+En el directorio ``ros2_ws/src`` ejecute el siguiente comando:
+
+```
+git clone https://github.com/ros/ros_tutorials.git -b jazzy
+```
+Ahora el paquete ``ros_tutorials`` ha sido clonado en el workspace (``ros2_ws``). 
+Hasta el momento se ha rellado el workspace crreado con un paquete de ejemplo, pero aún no es funcional, es necesario resolver las dependencias y luego construir el workspace.
+
+#### Resolver dependencias
+
+Para usar el comando rosdep es necesario asegurar que tu sistema está actualizado antes de instalar nuevos paquetes.
+
+para ello es necesario ejecutar los siguientes comandos en una nueva terminal:
+
+```
+sudo apt upgrade
+```
+
+
+```
+sudo rosdep init
+```
+
+```
+rosdep update
+```
+
+```
+rosdep install --from-paths src --ignore-src -y --skip-keys "fastcdr rti-connext-dds-6.0.1 urdfdom_headers"
+```
+
+Al finalizar cierre la termial.
+
+Ahora en la terminal anterior dirigete a la raíz del workspace (``ros2_ws``) con el siguiente comando:
+
+```
+cd ..
+```
+
+Por consiguiente, ejecuta lo siguiente:
+
+```
+git clone https://github.com/ros/ros_tutorials.git -b jazzy
+```
+
+Si todo está bien con tus dependencias, en la terminal retornará lo siguiente
+
+``
+#All required rosdeps installed successfully
+`` 
+
+## Costruir el workspace con ``colcon``
+
+En la misma terminal en la raiz del workspace (``ros2_ws``) construyá sus paquetes con el siguiente comando:
+
+```
+colcon build
+```
+La terminal retornará el siguiente algo similar a esto:
+
+``
+Starting >>> turtlesim
+Finished <<< turtlesim [5.49s]
+`` 
+
+``
+Finished <<< turtlesim [5.49s]
+`` 
+
+``
+Summary: 1 package finished [5.58s]
+`` 
+Ahora ejecute el siguiente comando en la raíz del workspace (``~/ros2_ws``)
+
+```
+ls
+```
+
+Si todo está bien en la terminal verá las nuevas carpetas que ``colcon``ha creado:
+
+``
+build  install  log  src
+`` 
+
+
+
+
+## Herramientas esenciales en ROS 2
 
 ### 2.1. Instalación de rqt (Herramienta de interfaz gráfica)
 Ejecute una terminal para instalar ``rqt`` y sus plugins
@@ -58,6 +178,12 @@ Ejecute una terminal para instalar ``rqt`` y sus plugins
 sudo apt update
 sudo apt install '~nros-jazzy-rqt*'
 ```
+
+
+###  Manual de los comandos en Linux
+**source:** Lee y ejecuta comandos de un archivo
+**echo:** Añade un string a un fichero (echo " " >> prueba.txt)
+
 
 
 
