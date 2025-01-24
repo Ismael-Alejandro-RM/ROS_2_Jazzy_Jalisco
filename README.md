@@ -1,28 +1,25 @@
-# Guía para utilizar ROS 2 (Jazzy Jalisco) en ubuntu 24.04.1
+# Guía rápida para utilizar ROS 2 (Jazzy Jalisco) en ubuntu 24.04.1
 
 Antes de continuar con la configuración es necesario realizar los pasos para instalar ROS 2
 ## 1. Configurando el entorno
 
- ### 1.1. Obtener los archivos de instalación
-
-
+### 1.1. Hacer un source a los archivos de instalación
 
 Para tener acceso a los comandos de ROS, cada vez que se abre una terminal es necesario ejecutar lo siguiente: 
 ```
 source /opt/ros/jazzy/setup.bash
 ```
 
-### 1.2 Agregar el comando al startup script
+   - ### Nota: Agregar el comando anterior al startup script
+     Para evitar lo anterior cada vez que se abre una terminal, es necesario agregar el mismo comando al startup script (``.bashrc``), para ello en una nueva terminal ejecute el siguiente comando:
+     
+     ```
+     echo "source /opt/ros/jazzy/setup.bash" >> ~/.bashrc
+     ```
 
+### 1.2. Verificar las variables del entorno
 
-Para evitar lo anterior cada vez que se abre una terminal, es necesario agregar el mismo comando al startup script (``.bashrc``)
-
-```
-echo "source /opt/ros/jazzy/setup.bash" >> ~/.bashrc
-```
-### 1.3. Verificar las variables del entorno
-
-Para verificar que el entorno para operar ROS 2 está apropiadamente configurado, ejecute el siguiente comando:
+Para verificar que el entorno para operar ROS 2 está apropiadamente configurado, en una terminal ejecute el siguiente comando:
 ```
 printenv | grep -i ROS
 ```
@@ -42,7 +39,7 @@ Revisé que las variables ``ROS_DISTRO`` and ``ROS_VERSION`` están configuradas
 
 ### 1.4. Establecer la variable ``ROS_DOMAIN_ID``
 
-Para evitar incovenientes entre usuarios de ROS 2 conectados a una misma red, es necesario establecer un valor entre 0 y 101. Para ello, ejecute el siguiente comando estableciendo un valor en ``<your_domain_id>``
+Para evitar incovenientes entre usuarios de ROS 2 conectados a una misma red, es necesario establecer un valor entre ``0`` y ``101``. Para ello, ejecute el siguiente comando estableciendo un valor en ``<your_domain_id>``
 ```
 echo "export ROS_DOMAIN_ID=<your_domain_id>" >> ~/.bashrc
 ```
@@ -67,7 +64,7 @@ echo "export _colcon_cd_root=/opt/ros/jazzy/" >> ~/.bashrc
 ```
 
 
-## Crear un workspace
+## 3. Crear un workspace
 
 Un workspace es un directorio que contiene los paquetes de ROS 2
 Primero es necesario crear un carpeta (``ros2_ws``) para contener el workspace, ejecutando los siguientes comandos:
@@ -81,7 +78,7 @@ cd ~/ros2_ws
 
 En este punto, la carpeta ``ros2_ws`` contiene solo una subcarpeta vacia ``src``
 
-### Clonar un repositorio de muestra
+### 3.1. Clonar un repositorio de muestra
 En el directorio ``ros2_ws/src`` ejecute el siguiente comando:
 
 ```
@@ -133,14 +130,14 @@ Si todo está bien con tus dependencias, en la terminal retornará lo siguiente
 #All required rosdeps installed successfully
 `` 
 
-## Costruir el workspace con ``colcon``
+## 3.2 Costruir el workspace con ``colcon``
 
 En la misma terminal en la raiz del workspace (``ros2_ws``) construyá sus paquetes con el siguiente comando:
 
 ```
 colcon build
 ```
-La terminal retornará el siguiente algo similar a esto:
+La terminal retornará algo similar a esto:
 
 ``
 Starting >>> turtlesim
@@ -180,8 +177,10 @@ sudo apt install '~nros-jazzy-rqt*'
 ```
 
 
-###  Manual de los comandos en Linux
+###  Manual de los comandos más usados en Linux
+
 **source:** Lee y ejecuta comandos de un archivo
+
 **echo:** Añade un string a un fichero (echo " " >> prueba.txt)
 
 
