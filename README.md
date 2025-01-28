@@ -3,15 +3,15 @@
 Antes de continuar con la configuración es necesario realizar los pasos para instalar ROS 2
 ## 1. Configurando el entorno
 
-### 1.1. Hacer un source a los archivos de instalación
+### 1.1. Hacer un source a los archivos de instalación (underlay)
 
-Para tener acceso a los comandos de ROS, cada vez que se abre una terminal es necesario ejecutar lo siguiente: 
+Para tener acceso a los comandos de ROS 2, cada vez que se requiera ejecutar un paquete es necesario en una terminal correr lo siguiente: 
 ```
 source /opt/ros/jazzy/setup.bash
 ```
 
    - ### Nota: Agregar el comando anterior al startup script
-     Para evitar lo anterior cada vez que se abre una terminal, es necesario agregar el mismo comando al startup script (``.bashrc``), para ello en una nueva terminal ejecute el siguiente comando:
+     Lo más comun para usuarios de ROS 2 para evitar lo anterior, cada vez que se quiere ejecutar un paquete, es agregar el mismo comando al startup script (``.bashrc``), para ello en una nueva terminal ejecute el siguiente comando:
      
      ```
      echo "source /opt/ros/jazzy/setup.bash" >> ~/.bashrc
@@ -37,7 +37,7 @@ Revisé que las variables ``ROS_DISTRO`` and ``ROS_VERSION`` están configuradas
   ROS_DISTRO={DISTRO}
 ``
 
-### 1.4. Establecer la variable ``ROS_DOMAIN_ID``
+### 1.3. Establecer la variable ``ROS_DOMAIN_ID``
 
 Para evitar incovenientes entre usuarios de ROS 2 conectados a una misma red, es necesario establecer un valor entre ``0`` y ``101``. Para ello, ejecute el siguiente comando estableciendo un valor en ``<your_domain_id>``
 ```
@@ -47,12 +47,14 @@ echo "export ROS_DOMAIN_ID=<your_domain_id>" >> ~/.bashrc
 
 ## 2. Uso de ``colcon`` para construir paquetes
 
+El comando ``colcon`` es de suma importancia en el ambiente de ROS 2, es una iteración de las herramientas de compilación.
+
 ### 2.1. Instalar colcon 
 ```
 sudo apt install python3-colcon-common-extensions
 ```
 
-### configurar ``colcon_cd`` 
+### 2.2. Configurar ``colcon_cd`` 
 El comando ``colcon_cd``  permite dirigirse rápidamente a la raiz de la carpeta donde está el paquete creado desde la terminal, para ello ejecute los siguientes comandos, los cuales son agregados al archivo .bashrc
 
 ```
@@ -63,29 +65,40 @@ echo "source /usr/share/colcon_cd/function/colcon_cd.sh" >> ~/.bashrc
 echo "export _colcon_cd_root=/opt/ros/jazzy/" >> ~/.bashrc
 ```
 
+Para probar el funcionando del comando ``colcon_cd`` ejecute la siguiente instrucción cambiando ``some_ros_package`` por el nombre de su paquete:
+
+```
+colcon_cd some_ros_package
+```
 
 ## 3. Crear un workspace
 
-Un workspace es un directorio que contiene los paquetes de ROS 2
-Primero es necesario crear un carpeta (``ros2_ws``) para contener el workspace, ejecutando los siguientes comandos:
+Un workspace es un directorio que contiene los paquetes de ROS 2, la mejor práctica es crear un nuevo directorio para cada nuevo workspace.
+
+### 3.1. Crear un nuevo directorio
+
+Para ello, primero elija el nombre del directorio (por ejemplo ``ros2_ws``), posteriormente ejecute el siguiente comando en una terminal para crear el workspace. 
+
 ```
 mkdir -p ~/ros2_ws/src
 ```
+
+El siguiente comando navega hacia la subcarpeta ``src`` dentro de la carpeta ``ros2_ws`` 
 
 ```
 cd ~/ros2_ws
 ```
 
-En este punto, la carpeta ``ros2_ws`` contiene solo una subcarpeta vacia ``src``
+En este punto, la carpeta ``ros2_ws`` contiene solo una subcarpeta vacia ``src``, otra buena práctica es colocar nuestros paquetes dentro de esta subcarpeta.
 
-### 3.1. Clonar un repositorio de muestra
-En el directorio ``ros2_ws/src`` ejecute el siguiente comando:
+### 3.2. Clonar un repositorio de muestra
+En la mima terminal, asegurese de estar en el directorio ``ros2_ws/src`` antes de clonar el siguiente paquete, para ello ejecute el siguiente comando:
 
 ```
 git clone https://github.com/ros/ros_tutorials.git -b jazzy
 ```
 Ahora el paquete ``ros_tutorials`` ha sido clonado en el workspace (``ros2_ws``). 
-Hasta el momento se ha rellado el workspace crreado con un paquete de ejemplo, pero aún no es funcional, es necesario resolver las dependencias y luego construir el workspace.
+Hasta el momento se ha rellenado el workspace creado con un paquete de ejemplo, pero aún no es funcional, es necesario resolver las dependencias y luego construir el workspace.
 
 #### Resolver dependencias
 
