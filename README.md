@@ -1,14 +1,25 @@
 # Guía para comenzar con ROS 2 (Jazzy Jalisco) en ubuntu 24.04.1
 
-En esta guía se han recopilado los pasos importantes para la instalación y configuración de ROS 2. A continuación se muestra el contenido de este repositorio:
+En esta guía se han recopilado los pasos más importantes para la instalación y configuración de ROS 2.
+
+A continuación se muestra el contenido de este repositorio:
 
 1. [Instalación de ROS 2 (Jazzy Jalisco)](#1-instalación-de-ros-2-jazzy-jalisco)
 2. [ Configurar el entorno)](#2-configurar-el-entorno)
    - [Hacer un source al entorno de ROS 2 (underlay)](#hacer-un-source-al-entorno-de-ros-2-underlay)
    - [Verificar las variables del entorno](verificar-las-variables-del-entorno)
    - [Establecer la variable ``ROS_DOMAIN_ID``](#establecer-la-variable-ros_domain_id)
+3. [Uso de ``colcon`` para construir paquetes](#3-uso-de-colcon-para-construir-paquetes)
+   - [Instalar colcon](#instalar-colcon)
+   - [Configurar ``colcon_cd``](#configurar-colcon_cd)
+4. [Crear un workspace](#4-crear-un-workspace)
+   - [Clonar un paquete de muestra](#clonar-un-paquete-de-muestra)
+   - [Resolver dependencias](#resolver-dependencias)
+   - [Construir el workspace con ``colcon``](#construir-el-workspace-con-colcon)
+   - [Hacer un source al workspace (Overlay)](#hacer-un-source-al-workspace-overlay)
 5. [Crear un package](#5-crear-un-package)
-
+   - [Construir un package](#construir-un-package)
+   - [Usar el package](#usar-el-package)
 
 
 ## 1. Instalación de ROS 2 (Jazzy Jalisco)
@@ -62,12 +73,12 @@ echo "export ROS_DOMAIN_ID=<your_domain_id>" >> ~/.bashrc
 
 El comando ``colcon`` es de suma importancia en el ambiente de ROS 2, es una iteración de las herramientas de compilación.
 
-### 3.1. Instalar colcon 
+### Instalar colcon 
 ```
 sudo apt install python3-colcon-common-extensions
 ```
 
-### 3.2. Configurar ``colcon_cd`` 
+### Configurar ``colcon_cd`` 
 El comando ``colcon_cd``  permite dirigirse rápidamente a la raiz de la carpeta donde está el paquete creado desde la terminal, para ello ejecute los siguientes comandos, los cuales son agregados al archivo .bashrc
 
 ```
@@ -88,8 +99,6 @@ colcon_cd some_ros_package
 
 Un workspace es un directorio que contiene los paquetes de ROS 2, se recomienda crear un nuevo directorio para cada workspace.
 
-### 4.1. Crear un nuevo workspace
-
 Para ello, primero elija el nombre del directorio (por ejemplo ``ros2_ws``), posteriormente ejecute el siguiente comando en una terminal para crear el workspace. 
 
 ```
@@ -104,7 +113,7 @@ cd ~/ros2_ws
 
 En este punto, la carpeta ``ros2_ws`` contiene solo una subcarpeta vacia ``src``, otra buena práctica es colocar nuestros paquetes dentro de esta subcarpeta.
 
-### 4.2. Clonar un repositorio de muestra 
+### Clonar un paquete de muestra 
 
 En la mima terminal, asegurese de estar en el directorio ``ros2_ws/src`` antes de clonar el siguiente paquete, para ello ejecute el siguiente comando:
 
@@ -115,7 +124,7 @@ Ahora el paquete ``ros_tutorials`` ha sido clonado en el workspace (``ros2_ws``)
 
 Hasta el momento se ha rellenado el workspace creado con un paquete de ejemplo, pero aún no es funcional, es necesario resolver las dependencias y luego construir el workspace con el comando ``colcon build``.
 
-### 4.3. Resolver dependencias
+### Resolver dependencias
 
 Para usar el comando ``rosdep`` es necesario asegurar que tu sistema está actualizado antes de instalar nuevos paquetes. Para ello, es necesario ejecutar los siguientes comandos en una nueva terminal:
 
@@ -155,7 +164,7 @@ Si todo está bien con tus dependencias, en la terminal retornará lo siguiente
 #All required rosdeps installed successfully
 `` 
 
-### 4.4 Construir el workspace con ``colcon``
+### Construir el workspace con ``colcon``
 
 En la misma terminal en la raiz del workspace (``ros2_ws``) construyá sus paquetes con el siguiente comando:
 
@@ -188,7 +197,7 @@ Si todo está bien en la terminal verá las nuevas carpetas que ``colcon``ha cre
 build  install  log  src
 `` 
 
-### 4.5 Hacer un source al workspace (Overlay)
+### Hacer un source al workspace (Overlay)
 Cada vez que los archivos creados en un paquete dentro de nuestro workspace son modificados o actualizados es necesario hacer un source (ejecutar) a nuestro workspace. 
 
 Para esto, en una nueva terminal digirasé a la raíz del workspace
@@ -224,10 +233,7 @@ Por último, para probar que todo está bien, ejecute el package ``turtlesim``, 
 
 ## 5 Crear un package
 
-### 5.1. Crear un nuevo package
-
 Un package es una forma de agrupar nuestros archivos (scripts, ejecutables, archivos de configuración) en ROS 2, si necesitas compartir tu código con otros, en necesario organizarlo en un package.
-
 
 Para crear un package dirigasé a la subcarpeta ``src`` del workspace
 
@@ -247,7 +253,7 @@ Donde ``<package_name>``es el nombre del package y ``node_name`` es el nombre de
 ros2 pkg create --build-type ament_cmake --license Apache-2.0 --node-name my_node my_package
 ```
 
-### 5.2. Construir un package
+### Construir un package
 
 En una nueva terminal, dirigasé a la raíz de su workspace
 
@@ -268,7 +274,7 @@ colcon build
      colcon build --packages-select my_package
      ```
 
-### 5.3. Usar el package
+### Usar el package
 
 Para correr el ejecutable creado duante la creación del package, ejecute el siguiente comando:
 
