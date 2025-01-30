@@ -4,15 +4,17 @@ En esta guía se han recopilado los pasos importantes para la instalación y con
 
 1. [Instalación de ROS 2 (Jazzy Jalisco)](#1-instalación-de-ros-2-jazzy-jalisco)
 2. [ Configurar el entorno)](#2-configurar-el-entorno)
-    2.1 - [Hacer un source al entorno de ROS 2 (underlay)](#21-hacer-un-source-al-entorno-de-ros-2-underlay) 
-- [5 Crear un package](#5-crear-un-package)
+   - [Hacer un source al entorno de ROS 2 (underlay)](#hacer-un-source-al-entorno-de-ros-2-underlay)
+   - [Verificar las variables del entorno](verificar-las-variables-del-entorno)
+   - [Establecer la variable ``ROS_DOMAIN_ID``](#establecer-la-variable-ros_domain_id)
+5. [Crear un package](#5-crear-un-package)
 
 
 
 ## 1. Instalación de ROS 2 (Jazzy Jalisco)
 
 
-## 2 Configurar el entorno
+## 2. Configurar el entorno
 
 ### Hacer un source al entorno de ROS 2 (underlay)
 
@@ -28,7 +30,7 @@ source /opt/ros/jazzy/setup.bash
      echo "source /opt/ros/jazzy/setup.bash" >> ~/.bashrc
      ```
 
-### 2.2. Verificar las variables del entorno
+### Verificar las variables del entorno
 
 Para verificar que el entorno para operar ROS 2 está apropiadamente configurado, en una terminal ejecute el siguiente comando:
 ```
@@ -48,7 +50,7 @@ Revisé que las variables ``ROS_DISTRO`` and ``ROS_VERSION`` están configuradas
   ROS_DISTRO={DISTRO}
 ``
 
-### 2.3. Establecer la variable ``ROS_DOMAIN_ID``
+### Establecer la variable ``ROS_DOMAIN_ID`` 
 
 Para evitar incovenientes entre usuarios de ROS 2 conectados a una misma red, es necesario establecer un valor entre ``0`` y ``101``. Para ello, ejecute el siguiente comando estableciendo un valor en ``<your_domain_id>``
 ```
