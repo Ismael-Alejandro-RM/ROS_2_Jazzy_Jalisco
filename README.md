@@ -20,6 +20,7 @@ A continuación se muestra el contenido de este repositorio:
 5. [Crear un package](#5-crear-un-package)
    - [Construir un package](#construir-un-package)
    - [Usar el package](#usar-el-package)
+6. [Herramientas esenciales en ROS 2](#6-herramientas-esenciales-en-ros-2)
 
 
 ## 1. Instalación de ROS 2 (Jazzy Jalisco)
