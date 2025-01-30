@@ -2,18 +2,19 @@
 
 En esta guía se han recopilado los pasos importantes para la instalación y configuración de ROS 2. A continuación se muestra el contenido de este repositorio:
 
-- [1 Instalación de ROS 2 (Jazzy Jalisco)](#1-instalación-de-ros-2-jazzy-jalisco)
-- [2 Configurar el entorno)](#2-configurar-el-entorno)
+1. [Instalación de ROS 2 (Jazzy Jalisco)](#1-instalación-de-ros-2-jazzy-jalisco)
+2. [ Configurar el entorno)](#2-configurar-el-entorno)
+    2.1 - [Hacer un source al entorno de ROS 2 (underlay)](#21-hacer-un-source-al-entorno-de-ros-2-underlay) 
 - [5 Crear un package](#5-crear-un-package)
 
-  -[2.1 Hacer un source al entorno de ROS 2 (underlay)](#2.1-hacer-un-source-al-entorno-de-ros-2-(underlay)) 
 
-## 1 Instalación de ROS 2 (Jazzy Jalisco)
+
+## 1. Instalación de ROS 2 (Jazzy Jalisco)
 
 
 ## 2 Configurar el entorno
 
-### 2.1 Hacer un source al entorno de ROS 2 (underlay)
+### Hacer un source al entorno de ROS 2 (underlay)
 
 Para tener acceso a los comandos y herramientas de ROS 2, cada vez que se requiera ejecutar un paquete es necesario en una terminal correr lo siguiente: 
 ```
