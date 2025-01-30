@@ -3,6 +3,8 @@
 En esta guía se han recopilado los pasos importantes para la instalación y configuración de ROS 2. A continuación se muestra el contenido de este repositorio:
 
 - [1. Instalación de ROS 2 (Jazzy Jalisco)](#instalación-de-ros-2)
+- [2. Configurar el entorno)](#2. Configurar el entorno)
+- [Crear un package](#crear-un-package)
 
 
 
