@@ -1,29 +1,82 @@
 # Guía para comenzar con ROS 2 (Jazzy Jalisco) en ubuntu 24.04.1
 
-En esta guía se han recopilado los pasos más importantes para la instalación y configuración de ROS 2.
+En esta guía se ha recopilado los pasos más importantes para la instalación y configuración de ROS 2.
 
 A continuación se muestra el contenido de este repositorio:
 
 1. [Instalación de ROS 2 (Jazzy Jalisco)](#1-instalación-de-ros-2-jazzy-jalisco)
-2. [ Configurar el entorno)](#2-configurar-el-entorno)
+   - [Habilitar los repositorios requeridos](#habilitar-los-repositorios-requeridos)
+   - [Instalar ROS 2](#instalar-ros-2)
+3. [ Configurar el entorno](#2-configurar-el-entorno)
    - [Hacer un source al entorno de ROS 2 (underlay)](#hacer-un-source-al-entorno-de-ros-2-underlay)
    - [Verificar las variables del entorno](verificar-las-variables-del-entorno)
    - [Establecer la variable ``ROS_DOMAIN_ID``](#establecer-la-variable-ros_domain_id)
-3. [Uso de ``colcon`` para construir paquetes](#3-uso-de-colcon-para-construir-paquetes)
+4. [Uso de ``colcon`` para construir paquetes](#3-uso-de-colcon-para-construir-paquetes)
    - [Instalar colcon](#instalar-colcon)
    - [Configurar ``colcon_cd``](#configurar-colcon_cd)
-4. [Crear un workspace](#4-crear-un-workspace)
+5. [Crear un workspace](#4-crear-un-workspace)
    - [Clonar un paquete de muestra](#clonar-un-paquete-de-muestra)
    - [Resolver dependencias](#resolver-dependencias)
    - [Construir el workspace con ``colcon``](#construir-el-workspace-con-colcon)
    - [Hacer un source al workspace (Overlay)](#hacer-un-source-al-workspace-overlay)
-5. [Crear un package](#5-crear-un-package)
+6. [Crear un package](#5-crear-un-package)
    - [Construir un package](#construir-un-package)
    - [Usar el package](#usar-el-package)
-6. [Herramientas esenciales en ROS 2](#6-herramientas-esenciales-en-ros-2)
+7. [Herramientas esenciales en ROS 2](#6-herramientas-esenciales-en-ros-2)
 
 
 ## 1. Instalación de ROS 2 (Jazzy Jalisco)
+
+Los siguientes paquetes de instalación estan actualmente disponibles para Ubuntu Noble (24.04.1)
+
+### Habilitar los repositorios requeridos
+
+Es necesario agregar el repositorio apt de ROS 2 a su sistema, para ello en una terminal ejecute la siguiente instrucción:
+
+```
+sudo apt install software-properties-common
+sudo add-apt-repository universe
+```
+
+Por consiguiente, es necesario agregar la llave ROS 2 GPG, para esto, en la misma terminal ejecute lo siguiente:
+
+```
+sudo apt update && sudo apt install curl -y
+sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+```
+
+Ahora agregue el repositorio a la lista source:
+
+```
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
+```
+
+También es necesario instalar algunas herramientas de desarrollo para construir package en ROS 2, para ello, ejecute lo siguiente:
+
+```
+sudo apt update && sudo apt install ros-dev-tools
+```
+
+### Instalar ROS 2
+
+Primero, es necesario actulizar el repositorio apt, despues de haber hecho la configuración anterior, por lo cual, en la misma terminal ejecute el siguiente comando:
+
+```
+sudo apt update
+```
+
+Posteriormente, ejecute el siguiente comando para tener lo más actualizado su sistema:
+
+```
+sudo apt update
+```
+
+Por último, ejecute lo siguiente para instalar la versión de escritorio que es la recomendada:
+
+```
+sudo apt install ros-jazzy-desktop
+```
+
 
 
 ## 2. Configurar el entorno
@@ -31,6 +84,7 @@ A continuación se muestra el contenido de este repositorio:
 ### Hacer un source al entorno de ROS 2 (underlay)
 
 Para tener acceso a los comandos y herramientas de ROS 2, cada vez que se requiera ejecutar un paquete es necesario en una terminal correr lo siguiente: 
+
 ```
 source /opt/ros/jazzy/setup.bash
 ```
