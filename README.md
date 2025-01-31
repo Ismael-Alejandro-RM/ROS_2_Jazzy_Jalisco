@@ -1,14 +1,14 @@
 # Guía para comenzar con ROS 2 (Jazzy Jalisco) en ubuntu 24.04.1
 
-En esta guía se ha recopilado los pasos más importantes para la instalación y configuración de ROS 2.
+En esta guía se han recopilado los pasos más importantes para la instalación y configuración de ROS 2.
 
-A continuación se muestra el contenido de este repositorio:
+A continuación, se muestra el contenido de este repositorio:
 
 1. [Instalación de ROS 2 (Jazzy Jalisco)](#1-instalación-de-ros-2-jazzy-jalisco)
    - [Habilitar los repositorios requeridos](#habilitar-los-repositorios-requeridos)
    - [Instalar ROS 2](#instalar-ros-2)
 3. [ Configurar el entorno](#2-configurar-el-entorno)
-   - [Hacer un source al entorno de ROS 2 (underlay)](#hacer-un-source-al-entorno-de-ros-2-underlay)
+   - [Hacer un source al entorno de ROS 2 (Underlay)](#hacer-un-source-al-entorno-de-ros-2-underlay)
    - [Verificar las variables del entorno](verificar-las-variables-del-entorno)
    - [Establecer la variable ``ROS_DOMAIN_ID``](#establecer-la-variable-ros_domain_id)
 4. [Uso de ``colcon`` para construir paquetes](#3-uso-de-colcon-para-construir-paquetes)
@@ -31,7 +31,7 @@ Los siguientes paquetes de instalación estan actualmente disponibles para Ubunt
 
 ### Habilitar los repositorios requeridos
 
-Es necesario agregar el repositorio apt de ROS 2 a su sistema, para ello en una terminal ejecute la siguiente instrucción:
+Es necesario agregar el repositorio apt de ROS 2 a su sistema, para ello, en una terminal ejecute la siguiente instrucción:
 
 ```
 sudo apt install software-properties-common
@@ -51,7 +51,7 @@ Ahora agregue el repositorio a la lista source:
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
 ```
 
-También es necesario instalar algunas herramientas de desarrollo para construir package en ROS 2, para ello, ejecute lo siguiente:
+Además, es necesario instalar algunas herramientas de desarrollo para construir packages en ROS 2, para ello, ejecute lo siguiente:
 
 ```
 sudo apt update && sudo apt install ros-dev-tools
@@ -59,19 +59,19 @@ sudo apt update && sudo apt install ros-dev-tools
 
 ### Instalar ROS 2
 
-Primero, es necesario actulizar el repositorio apt, despues de haber hecho la configuración anterior, por lo cual, en la misma terminal ejecute el siguiente comando:
+Primero, es necesario actualizar el repositorio apt después de haber realizado la configuración anterior, para esto, en la misma terminal ejecute el siguiente comando:
 
 ```
 sudo apt update
 ```
 
-Posteriormente, ejecute el siguiente comando para tener lo más actualizado su sistema:
+Posteriormente, ejecute el siguiente comando para mantener su sistema completamente actualizado:
 
 ```
 sudo apt update
 ```
 
-Por último, ejecute lo siguiente para instalar la versión de escritorio que es la recomendada:
+Por último, ejecute lo siguiente para instalar la versión de escritorio (recomendada) 
 
 ```
 sudo apt install ros-jazzy-desktop
@@ -81,16 +81,16 @@ sudo apt install ros-jazzy-desktop
 
 ## 2. Configurar el entorno
 
-### Hacer un source al entorno de ROS 2 (underlay)
+### Hacer un source al entorno de ROS 2 (Underlay)
 
-Para tener acceso a los comandos y herramientas de ROS 2, cada vez que se requiera ejecutar un paquete es necesario en una terminal correr lo siguiente: 
+Para acceder a los comandos y herramientas de ROS 2 cada vez que necesite ejecutar un paquete, ejecute lo siguiente en una terminal:
 
 ```
 source /opt/ros/jazzy/setup.bash
 ```
 
    - ### Nota: Agregar el comando anterior al startup script
-     Lo más comun para usuarios de ROS 2 para evitar lo anterior, cada vez que se quiere ejecutar un paquete, es agregar el mismo comando al startup script (``.bashrc``), para ello en una nueva terminal ejecute el siguiente comando:
+     Lo más común para usuarios de ROS 2 para evitar lo anterior, es agregar el mismo comando al startup script (``.bashrc``), para ello, en una nueva terminal ejecute la siguiente instrucción:
      
      ```
      echo "source /opt/ros/jazzy/setup.bash" >> ~/.bashrc
@@ -98,11 +98,11 @@ source /opt/ros/jazzy/setup.bash
 
 ### Verificar las variables del entorno
 
-Para verificar que el entorno para operar ROS 2 está apropiadamente configurado, en una terminal ejecute el siguiente comando:
+Para verificar que el entorno para operar ROS 2 está apropiadamente configurado, ejecute el siguiente comando en una nueva terminal:
 ```
 printenv | grep -i ROS
 ```
-Revisé que las variables ``ROS_DISTRO`` and ``ROS_VERSION`` están configuradas, en la terminal se debe apreciar lo siguiente: 
+Revise que las variables ``ROS_DISTRO`` y ``ROS_VERSION`` están configuradas, en la terminal se debe apreciar lo siguiente: 
 
 ``
   ROS_VERSION=2
@@ -118,11 +118,10 @@ Revisé que las variables ``ROS_DISTRO`` and ``ROS_VERSION`` están configuradas
 
 ### Establecer la variable ``ROS_DOMAIN_ID`` 
 
-Para evitar incovenientes entre usuarios de ROS 2 conectados a una misma red, es necesario establecer un valor entre ``0`` y ``101``. Para ello, ejecute el siguiente comando estableciendo un valor en ``<your_domain_id>``
+Para evitar incovenientes entre usuarios de ROS 2 conectados a una misma red, es necesario establecer un valor entre ``0`` y ``101`` para la variable ``ROS_DOMAIN_ID``. Para ello, ejecute el siguiente comando estableciendo un valor en ``<your_domain_id>``
 ```
 echo "export ROS_DOMAIN_ID=<your_domain_id>" >> ~/.bashrc
 ```
-
 
 ## 3. Uso de ``colcon`` para construir paquetes
 
@@ -134,7 +133,7 @@ sudo apt install python3-colcon-common-extensions
 ```
 
 ### Configurar ``colcon_cd`` 
-El comando ``colcon_cd``  permite dirigirse rápidamente a la raiz de la carpeta donde está el paquete creado desde la terminal, para ello ejecute los siguientes comandos, los cuales son agregados al archivo .bashrc
+El comando ``colcon_cd``  permite dirigirse rápidamente a la raíz de la carpeta donde está el paquete creado desde la terminal, para ello, ejecute los siguientes comandos, los cuales son agregados al archivo ``.bashrc``
 
 ```
 echo "source /usr/share/colcon_cd/function/colcon_cd.sh" >> ~/.bashrc
@@ -144,7 +143,7 @@ echo "source /usr/share/colcon_cd/function/colcon_cd.sh" >> ~/.bashrc
 echo "export _colcon_cd_root=/opt/ros/jazzy/" >> ~/.bashrc
 ```
 
-Para probar el funcionando del comando ``colcon_cd`` ejecute la siguiente instrucción cambiando ``some_ros_package`` por el nombre de su paquete:
+Para probar el funcionando del comando ``colcon_cd``, ejecute la siguiente instrucción cambiando ``some_ros_package`` por el nombre de su package
 
 ```
 colcon_cd some_ros_package
@@ -154,7 +153,7 @@ colcon_cd some_ros_package
 
 Un workspace es un directorio que contiene los paquetes de ROS 2, se recomienda crear un nuevo directorio para cada workspace.
 
-Para ello, primero elija el nombre del directorio (por ejemplo ``ros2_ws``), posteriormente ejecute el siguiente comando en una terminal para crear el workspace. 
+Para ello, primero elija el nombre del directorio, por ejemplo: ``ros2_ws``, posteriormente, ejecute el siguiente comando en una terminal para crear el workspace. 
 
 ```
 mkdir -p ~/ros2_ws/src
@@ -170,7 +169,7 @@ En este punto, la carpeta ``ros2_ws`` contiene solo una subcarpeta vacia ``src``
 
 ### Clonar un paquete de muestra 
 
-En la mima terminal, asegurese de estar en el directorio ``ros2_ws/src`` antes de clonar el siguiente paquete, para ello ejecute el siguiente comando:
+En la misma terminal, asegúrese de estar en el directorio ``ros2_ws/src`` antes de clonar el siguiente paquete, para esto, ejecute el siguiente comando:
 
 ```
 git clone https://github.com/ros/ros_tutorials.git -b jazzy
@@ -181,7 +180,7 @@ Hasta el momento se ha rellenado el workspace creado con un paquete de ejemplo, 
 
 ### Resolver dependencias
 
-Para usar el comando ``rosdep`` es necesario asegurar que tu sistema está actualizado antes de instalar nuevos paquetes. Para ello, es necesario ejecutar los siguientes comandos en una nueva terminal:
+Para usar el comando ``rosdep`` es necesario asegurarse que el sistema está actualizado antes de instalar nuevos paquetes. Para ello, es necesario ejecutar los siguientes comandos en una nueva terminal:
 
 ```
 sudo apt upgrade
@@ -199,21 +198,21 @@ rosdep update
 rosdep install --from-paths src --ignore-src -y --skip-keys "fastcdr rti-connext-dds-6.0.1 urdfdom_headers"
 ```
 
-Al finalizar cierre la termial.
+Al finalizar, cierre la terminal.
 
-Ahora en una nueva terminal dirigete a la raíz del workspace (``ros2_ws``) con el siguiente comando:
+Ahora en una nueva terminal diríjase a la raíz del workspace (``ros2_ws``) con el siguiente comando:
 
 ```
 cd ~/ros2_ws/
 ```
 
-Por consiguiente, ejecuta lo siguiente:
+Por consiguiente, ejecute lo siguiente:
 
 ```
 rosdep install -i --from-path src --rosdistro jazzy -y
 ```
 
-Si todo está bien con tus dependencias, en la terminal retornará lo siguiente
+Si todo está bien con tus dependencias, la terminal retornará lo siguiente:
 
 ``
 #All required rosdeps installed successfully
@@ -221,7 +220,7 @@ Si todo está bien con tus dependencias, en la terminal retornará lo siguiente
 
 ### Construir el workspace con ``colcon``
 
-En la misma terminal en la raiz del workspace (``ros2_ws``) construyá sus paquetes con el siguiente comando:
+En la misma terminal en la raíz del workspace (``ros2_ws``) construya sus paquetes con el siguiente comando:
 
 ```
 colcon build
@@ -240,46 +239,49 @@ Finished <<< turtlesim [5.49s]
 ``
 Summary: 1 package finished [5.58s]
 `` 
+
 Ahora ejecute el siguiente comando en la raíz del workspace (``~/ros2_ws``)
 
 ```
 ls
 ```
 
-Si todo está bien en la terminal verá las nuevas carpetas que ``colcon``ha creado:
+Si todo está bien, en la terminal verá las siguientes carpetas que ``colcon`` ha creado:
 
 ``
 build  install  log  src
 `` 
 
 ### Hacer un source al workspace (Overlay)
-Cada vez que los archivos creados en un paquete dentro de nuestro workspace son modificados o actualizados es necesario hacer un source (ejecutar) a nuestro workspace. 
 
-Para esto, en una nueva terminal digirasé a la raíz del workspace
+Cada vez que los archivos creados en un paquete dentro de nuestro workspace son modificados o actualizados, es necesario hacer un source (ejecución) a nuestro workspace. 
 
-``
+Para esto, en una nueva terminal diríjase a la raíz del workspace
+
+```
 cd ~/ros2_ws
-`` 
-En la ráiz, haga un source al workspace:
+``` 
 
-``
+En la raíz, haga un source al workspace
+
+```
 source install/local_setup.bash
-``
+```
 
    - ### Nota: Agregar el comando anterior al startup script
-     Mayormente cuando se trabaja con un solo workspace es más facil agregar el mismo comando al startup script (``.bashrc``), para ello en una nueva terminal ejecute lo siguiente.
+     Mayormente cuando se trabaja con un solo workspace, es más fácil agregar el mismo comando al startup script (``.bashrc``), para ello, en una nueva terminal ejecute lo siguiente.
      
      ```
      echo "source ~/ros2_ws/install/setup.bash" >> ~/.bashrc
      ```
      
-     Cuando se trabaja con 2 o más workspaces distintos, lo mejor es hacer el source al workspace requerido o modificar el comando anterior dependiente del workspace elegido. La modificación se puede realizar accediendo al startup script, con el ||         siguiente comando:
+     Cuando se trabaja con 2 o más workspaces distintos, lo mejor es hacer el source al workspace requerido o modificar el comando anterior dependiendo del workspace elegido. La modificación se puede realizar accediendo al startup script, con el siguiente comando:
      
      ```
      gedit .bashrc
      ```
        
-Por último, para probar que todo está bien, ejecute el package ``turtlesim``, del repositorio clonado, con la siguiente instrucción:
+Por último, para probar que todo está bien, ejecute el package ``turtlesim`` del repositorio clonado, con la siguiente instrucción:
 
 ```
  ros2 run turtlesim turtlesim_node
@@ -290,7 +292,7 @@ Por último, para probar que todo está bien, ejecute el package ``turtlesim``, 
 
 Un package es una forma de agrupar nuestros archivos (scripts, ejecutables, archivos de configuración) en ROS 2, si necesitas compartir tu código con otros, en necesario organizarlo en un package.
 
-Para crear un package dirigasé a la subcarpeta ``src`` del workspace
+Para crear un package diríjase a la subcarpeta ``src`` de su workspace
 
 ```
 cd ~/ros2_ws/src
@@ -302,7 +304,7 @@ La sintaxis del comando para crear un un nuevo package en ROS 2 es:
 ros2 pkg create --build-type ament_cmake --license Apache-2.0 --node-name <node_name> <package_name>
 `` 
 
-Donde ``<package_name>``es el nombre del package y ``node_name`` es el nombre del nodo. Para ello, ejecutemos el comando anterior nombrando al package como ``my_package`` y el nodo como: ``my_node``
+Donde ``<package_name>``es el nombre del package y ``node_name`` es el nombre del nodo. Para ello, ejecute el comando anterior nombrando al package como ``my_package`` y el nodo como ``my_node``
 
 ```
 ros2 pkg create --build-type ament_cmake --license Apache-2.0 --node-name my_node my_package
@@ -310,20 +312,20 @@ ros2 pkg create --build-type ament_cmake --license Apache-2.0 --node-name my_nod
 
 ### Construir un package
 
-En una nueva terminal, dirigasé a la raíz de su workspace
+En una nueva terminal, diríjase a la raíz de su workspace
 
 ```
 cd ~/ros2_ws
 ``` 
 
-Ahora construya su paquete con el siguiente comando:
+Ahora construya su package con el siguiente comando:
 
 ```
 colcon build
 ```
 
    - ### Nota: Construir un solo package 
-     La proxima vez, que se tenga muchos packages creados, es posible construir un solo paquete seleccionado, para         ello, cambie ``my_package`` por el nombre de su paquete, en la siguiente instrucción:
+     La próxima vez que se tenga muchos packages creados, es posible construir un solo paquete seleccionado, para esto, en la siguiente instrucción, cambie ``my_package`` por el nombre de su paquete 
      
      ```
      colcon build --packages-select my_package
@@ -331,7 +333,7 @@ colcon build
 
 ### Usar el package
 
-Para correr el ejecutable creado duante la creación del package, ejecute el siguiente comando:
+Para correr el ejecutable creado durante la creación del package, ejecute el siguiente comando:
 
 ```
 ros2 run my_package my_node
@@ -339,7 +341,7 @@ ros2 run my_package my_node
 
 ## 6. Herramientas esenciales en ROS 2
 
-### 6.1 Instalación de rqt (Herramienta de interfaz gráfica)
+### 6.1 Instalación de RQT (Herramienta de interfaz Gráfica)
 Ejecute en una terminal la siguientes instrucciones para instalar ``rqt`` y sus plugins
 
 ```
