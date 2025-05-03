@@ -1,5 +1,11 @@
 # Guía para comenzar con ROS 2 (Jazzy Jalisco) en ubuntu 24.04.1
 
+ROS es un middleware (software) con el que diferentes paquetes se comunican entre sí
+
+Objetivos de ROS
+-Prover un standard para aplicaciones robóticas
+-Usarse en el cualquier robot
+
 En esta guía se han recopilado los pasos más importantes para la instalación y configuración de ROS 2.
 
 A continuación, se muestra el contenido de este repositorio:
