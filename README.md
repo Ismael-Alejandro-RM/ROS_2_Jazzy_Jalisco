@@ -6,6 +6,10 @@ Objetivos de ROS
 -Prover un standard para aplicaciones robóticas
 -Usarse en el cualquier robot
 
+Separación de código y Herramientas de comunicación
+ROS es un lenguaje *agnóstico* (no depende de una lenguaje específico)
+
+Herramientas y librerías de Plug&Play 
 En esta guía se han recopilado los pasos más importantes para la instalación y configuración de ROS 2.
 
 A continuación, se muestra el contenido de este repositorio:
