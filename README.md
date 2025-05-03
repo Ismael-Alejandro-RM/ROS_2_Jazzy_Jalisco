@@ -361,6 +361,11 @@ sudo apt update
 sudo apt install '~nros-jazzy-rqt*'
 ```
 
+## Comandos esenciales EN ROS 2
+Abrir y editar el archivo .bashrc
+```
+gedit .bashrc
+```
 
 
 
