@@ -12,6 +12,10 @@ ROS es un lenguaje *agnóstico* (no depende de una lenguaje específico)
 Herramientas y librerías de Plug&Play 
 En esta guía se han recopilado los pasos más importantes para la instalación y configuración de ROS 2.
 
+Nodos: Subprogramas de alguna aplicación, responsables de una sola una cosa, se comunican entre ellos a través de tópicos
+servicios y parámetros.
+
+
 A continuación, se muestra el contenido de este repositorio:
 
 1. [Instalación de ROS 2 (Jazzy Jalisco)](#1-instalación-de-ros-2-jazzy-jalisco)
