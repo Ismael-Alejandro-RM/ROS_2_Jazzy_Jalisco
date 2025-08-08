@@ -25,6 +25,7 @@ A continuación, se muestra el contenido de este repositorio:
    - [Construir un package](#construir-un-package)
    - [Usar el package](#usar-el-package)
 7. [Herramientas esenciales en ROS 2](#6-herramientas-esenciales-en-ros-2)
+8. [Comandos esenciales EN ROS 2](#8-comandos-esenciales-en-ros-2)
 
 
 ## 0. Descripción de ROS 2 
@@ -370,10 +371,16 @@ sudo apt install '~nros-jazzy-rqt*'
 ```
 
 ## Comandos esenciales EN ROS 2
-Abrir y editar el archivo .bashrc
+1. Abrir y editar el archivo .bashrc
 ```
 gedit .bashrc
 ```
+2. Instalar app terminator
+
+```
+sudo apt install terminator
+```
+
 
 
 
