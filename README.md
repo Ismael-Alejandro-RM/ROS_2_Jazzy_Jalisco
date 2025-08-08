@@ -170,7 +170,7 @@ colcon_cd some_ros_package
 
 ## 4. Crear un workspace
 
-==Un workspace es un directorio que contiene los paquetes de ROS 2, se recomienda crear un nuevo directorio para cada workspace.==
+> Un workspace es un directorio que contiene los paquetes de ROS 2, se recomienda crear un nuevo directorio para cada workspace.
 
 Para ello, primero elija el nombre del directorio, por ejemplo: ``ros2_ws``, posteriormente, ejecute el siguiente comando en una terminal para crear el workspace. 
 
