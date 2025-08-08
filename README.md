@@ -1,10 +1,12 @@
 # Guía para comenzar con ROS 2 (Jazzy Jalisco) en ubuntu 24.04.1
 
-ROS es un middleware (software) con el que diferentes paquetes se comunican entre sí
 
-Objetivos de ROS
--Prover un standard para aplicaciones robóticas
--Usarse en el cualquier robot
+**ROS** es un middleware (software) con el que diferentes paquetes se comunican entre sí
+
+Objetivos de ROS 
+
+1. Prover un standard para aplicaciones robóticas
+2. Usarse en  cualquier robot
 
 Separación de código y Herramientas de comunicación
 ROS es un lenguaje *agnóstico* (no depende de una lenguaje específico)
