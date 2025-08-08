@@ -6,26 +6,26 @@ A continuación, se muestra el contenido de este repositorio:
 
 0. [Descripción de ROS 2](#0-Descripción-de-ros-2)
    - [Conceptos](#-conceptos)
-2. [Instalación de ROS 2 (Jazzy Jalisco)](#1-instalación-de-ros-2-jazzy-jalisco)
+1. [Instalación de ROS 2 (Jazzy Jalisco)](#1-instalación-de-ros-2-jazzy-jalisco)
    - [Habilitar los repositorios requeridos](#habilitar-los-repositorios-requeridos)
    - [Instalar ROS 2](#instalar-ros-2)
-3. [ Configurar el entorno](#2-configurar-el-entorno)
+2. [ Configurar el entorno](#2-configurar-el-entorno)
    - [Hacer un source al entorno de ROS 2 (Underlay)](#hacer-un-source-al-entorno-de-ros-2-underlay)
    - [Verificar las variables del entorno](verificar-las-variables-del-entorno)
    - [Establecer la variable ``ROS_DOMAIN_ID``](#establecer-la-variable-ros_domain_id)
-4. [Uso de ``colcon`` para construir paquetes](#3-uso-de-colcon-para-construir-paquetes)
+3. [Uso de ``colcon`` para construir paquetes](#3-uso-de-colcon-para-construir-paquetes)
    - [Instalar colcon](#instalar-colcon)
    - [Configurar ``colcon_cd``](#configurar-colcon_cd)
-5. [Crear un workspace](#4-crear-un-workspace)
+4. [Crear un workspace](#4-crear-un-workspace)
    - [Clonar un paquete de muestra](#clonar-un-paquete-de-muestra)
    - [Resolver dependencias](#resolver-dependencias)
    - [Construir el workspace con ``colcon``](#construir-el-workspace-con-colcon)
    - [Hacer un source al workspace (Overlay)](#hacer-un-source-al-workspace-overlay)
-6. [Crear un package](#5-crear-un-package)
+5. [Crear un package](#5-crear-un-package)
    - [Construir un package](#construir-un-package)
    - [Usar el package](#usar-el-package)
-7. [Herramientas esenciales en ROS 2](#6-herramientas-esenciales-en-ros-2)
-8. [Comandos esenciales EN ROS 2](#8-comandos-esenciales-en-ros-2)
+6. [Herramientas esenciales en ROS 2](#6-herramientas-esenciales-en-ros-2)
+7. [Comandos esenciales en ROS 2](#7-comandos-esenciales-en-ros-2)
 
 
 ## 0. Descripción de ROS 2 
@@ -370,7 +370,7 @@ sudo apt update
 sudo apt install '~nros-jazzy-rqt*'
 ```
 
-## Comandos esenciales EN ROS 2
+## 7. Comandos esenciales en ROS 2
 1. Abrir y editar el archivo .bashrc
 ```
 gedit .bashrc
