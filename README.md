@@ -364,7 +364,19 @@ ros2 run my_package my_node
    ```
    sudo snap install code --classic
    ```
-3. Instalar RQT (Herramienta de interfaz Gráfica)
+   Posteriormente se puede instalar los siguientes extensiones dentro de Visual Studio Code
+   
+   A] ROS ((Microsoft v0.9.2)
+   B] CMake (by twxs)
+   C] C/C++ (Microsoft)
+   D] Python (Microsoft)
+
+2. Instalar gedit
+   ```
+   sudo apt install gedit
+   ```
+   
+. Instalar RQT (Herramienta de interfaz Gráfica)
 Ejecute en una terminal la siguientes instrucciones para instalar ``rqt`` y sus plugins
 
 ```
