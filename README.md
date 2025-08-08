@@ -1,7 +1,7 @@
 # Guía para comenzar con ROS 2 (Jazzy Jalisco) en ubuntu 24.04.1
 
 A continuación, se muestra el contenido de este repositorio:
-
+0. [Descripción de ROS 2](#0-Descripción-de-ros-2)
 1. [Instalación de ROS 2 (Jazzy Jalisco)](#1-instalación-de-ros-2-jazzy-jalisco)
    - [Habilitar los repositorios requeridos](#habilitar-los-repositorios-requeridos)
    - [Instalar ROS 2](#instalar-ros-2)
@@ -24,7 +24,6 @@ A continuación, se muestra el contenido de este repositorio:
 
 
 ## 0. Descripción de ROS 2 
-
 
 **ROS** es un middleware (software) con el que diferentes paquetes se comunican entre sí, además es un lenguaje *agnóstico* (no depende de una lenguaje específico)
 
