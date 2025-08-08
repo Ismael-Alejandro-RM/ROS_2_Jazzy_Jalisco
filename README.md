@@ -360,7 +360,11 @@ ros2 run my_package my_node
 
 ## 6. Herramientas esenciales en ROS 2
 
-### 6.1 Instalación de RQT (Herramienta de interfaz Gráfica)
+1. Instalar Visual studio Code
+   ```
+   sudo snap install code --classic
+   ```
+3. Instalar RQT (Herramienta de interfaz Gráfica)
 Ejecute en una terminal la siguientes instrucciones para instalar ``rqt`` y sus plugins
 
 ```
