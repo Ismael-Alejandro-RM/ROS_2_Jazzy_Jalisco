@@ -1,8 +1,12 @@
 # Guía para comenzar con ROS 2 (Jazzy Jalisco) en ubuntu 24.04.1
 
+En esta guía se han recopilado los pasos más importantes para la instalación, configuración, herramientas y conceptos de ROS 2.
+
 A continuación, se muestra el contenido de este repositorio:
+
 0. [Descripción de ROS 2](#0-Descripción-de-ros-2)
-1. [Instalación de ROS 2 (Jazzy Jalisco)](#1-instalación-de-ros-2-jazzy-jalisco)
+   - [Conceptos](#-conceptos)
+2. [Instalación de ROS 2 (Jazzy Jalisco)](#1-instalación-de-ros-2-jazzy-jalisco)
    - [Habilitar los repositorios requeridos](#habilitar-los-repositorios-requeridos)
    - [Instalar ROS 2](#instalar-ros-2)
 3. [ Configurar el entorno](#2-configurar-el-entorno)
@@ -33,9 +37,8 @@ A continuación, se muestra el contenido de este repositorio:
 2. Usarse en  cualquier robot
 3. Separación de código, proveer herramientas de comunicación y librerías de Plug&Play 
    
-En esta guía se han recopilado los pasos más importantes para la instalación y configuración de ROS 2.
 
-**Conceptos:**
+### Conceptos
 
 **Nodos:** Subprogramas de alguna aplicación, responsables de una sola una cosa, se comunican entre ellos a través de tópicos servicios y parámetros.
 
