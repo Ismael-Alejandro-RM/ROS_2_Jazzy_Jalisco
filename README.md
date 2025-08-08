@@ -102,7 +102,7 @@ sudo apt install ros-jazzy-desktop
 
 ### Hacer un source al entorno de ROS 2 (Underlay)
 
-Para acceder a los comandos y herramientas de ROS 2 cada vez que necesite ejecutar un paquete, ejecute lo siguiente en una terminal:
+Para acceder a los comandos y herramientas de ROS 2 cada vez que necesite correr un paquete, ejecute lo siguiente en una terminal:
 
 ```
 source /opt/ros/jazzy/setup.bash
@@ -396,6 +396,10 @@ gedit .bashrc
 ```
 sudo apt install terminator
 ```
+
+### 8. Descripción de los comandos en ubuntu
+
+**source:** Se utiliza para ejecutar un script o un archivo de configuración
 
 
 
