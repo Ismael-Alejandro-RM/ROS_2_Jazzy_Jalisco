@@ -317,7 +317,7 @@ Para crear un package diríjase a la subcarpeta ``src`` de su workspace
 cd ~/ros2_ws/src
 ```
 
-La sintaxis del comando para crear un un nuevo package en ROS 2 es:
+La sintaxis del comando para crear un un nuevo package con C++ en ROS 2 es:
 
 ``
 ros2 pkg create --build-type ament_cmake --license Apache-2.0 --node-name <node_name> <package_name>
