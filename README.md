@@ -311,6 +311,7 @@ Por último, para probar que todo está bien, ejecute el package ``turtlesim`` d
 
 ## 5 Crear un package
 
+### C++
 Un package es una forma de agrupar nuestros archivos (scripts, ejecutables, archivos de configuración) en ROS 2, si necesitas compartir tu código con otros, en necesario organizarlo en un package.
 
 Para crear un package diríjase a la subcarpeta ``src`` de su workspace
@@ -329,6 +330,65 @@ Donde ``<package_name>``es el nombre del package y ``node_name`` es el nombre de
 
 ```
 ros2 pkg create --build-type ament_cmake --license Apache-2.0 --node-name my_node my_package
+```
+
+Template para un nodo en C++
+
+```
+#include "rclcpp/rclcpp.hpp"
+
+class MyCustomNode : public rclcpp::Node // MODIFY NAME
+{
+public:
+    MyCustomNode() : Node("node_name") // MODIFY NAME
+    {
+    }
+
+private:
+};
+
+int main(int argc, char **argv)
+{
+    rclcpp::init(argc, argv);
+    auto node = std::make_shared<MyCustomNode>(); // MODIFY NAME
+    rclcpp::spin(node);
+    rclcpp::shutdown();
+    return 0;
+}
+``
+
+### Python 
+
+Template para un nodo en Python
+```
+#!/usr/bin/env python3
+import rclpy
+from rclpy.node import Node
+
+
+class MyCustomNode(Node): # MODIFY NAME
+    def __init__(self):
+        super().__init__("node_name") # MODIFY NAME
+
+
+def main(args=None):
+    rclpy.init(args=args)
+    node = MyCustomNode() # MODIFY NAME
+    rclpy.spin(node)
+    rclpy.shutdown()
+
+
+if __name__ == "__main__":
+    main()
+```
+
+Crear un nuevo nodo en un paquete de Python
+```
+touch <name_of_node> 
+```
+Posteriormente con el siguiente comando se crea el archivo ejecutable 
+```
+chmod +x <name_of_node> 
 ```
 
 ### Construir un package
