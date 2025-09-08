@@ -43,6 +43,8 @@ A continuación, se muestra el contenido de este repositorio:
 
 **Nodos:** Subprogramas de alguna aplicación, responsables de una sola una cosa, se comunican entre ellos a través de tópicos servicios y parámetros.
 
+**Tópicos:** Es un bus con nombre sobre el cual los nodos intercambian mensajes
+
 
 ## 1. Instalación de ROS 2 (Jazzy Jalisco)
 
@@ -387,15 +389,40 @@ sudo apt install '~nros-jazzy-rqt*'
 ```
 
 ## 7. Comandos esenciales en ROS 2
-1. Abrir y editar el archivo .bashrc
+
+Abrir y editar el archivo .bashrc
 ```
 gedit .bashrc
 ```
-2. Instalar app terminator
+Instalar app terminator
 
 ```
 sudo apt install terminator
 ```
+
+Visualizar los nodos y topicos disponibles
+```
+ros2 node list
+ros2 topic list
+```
+
+Renombrar un nodo en el tiempo de ejecución
+
+```
+ros2 run <name_of_pkg> <name_of_executable> --ros-args -r __node:=<rename_of_node>
+```
+
+Actualización automática del nodo sin necesidad de estar compilando cada vez que se hace una modificación (Solo para paquetes creados con Python)
+```
+colcon build --packgages-select <name_of_pkg> --symlink-install
+```
+
+Abrir rqt graph para visualizar el nombre de los nodos y tópicos activos
+```
+rqt_graph
+```
+
+
 
 ### 8. Descripción de los comandos en ubuntu
 
