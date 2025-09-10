@@ -323,14 +323,27 @@ cd ~/ros2_ws/src
 La sintaxis del comando para crear un un nuevo package con C++ en ROS 2 es:
 
 ``
-ros2 pkg create --build-type ament_cmake --license Apache-2.0 --node-name <node_name> <package_name>
+ros2 pkg create <package_name> --build-type ament_cmake  --dependencies rclcpp 
 `` 
 
-Donde ``<package_name>``es el nombre del package y ``node_name`` es el nombre del nodo. Para ello, ejecute el comando anterior nombrando al package como ``my_package`` y el nodo como ``my_node``
+Donde ``<package_name>``es el nombre del package. Para ello, ejecute lo anterior nombrando ``<package_name>`` como  ``my_cpp_pkg``, de la siguiente forma: 
+```
+ros2 pkg create my_cpp_pkg  --build-type ament_cmake  --dependencies rclcpp 
+```
+
+Para algun otro ejemplo, si conoce las dependecias a utilizar agreguelas despues de ``rclpy``
+
+Para crear un nuevo nodo en un paquete de C++, la sintaxis es la siguiente:
+```
+touch <name_of_node> 
+```
+Para ello cambie ``<name_of_node>``por ``my_first_node.cpp`` de la siguiente manera
 
 ```
-ros2 pkg create --build-type ament_cmake --license Apache-2.0 --node-name my_node my_package
+touch my:first_node.cpp 
 ```
+
+Ahora ya puede editar el archivo usando por ejemplo vscode.
 
 Template para un nodo en C++
 
@@ -357,7 +370,7 @@ int main(int argc, char **argv)
 }
 ```
 
-Una vez creado el nodo es necesario agregar las dependencias (librerias) al archivo package.xml, utilizando la siguiente sintaxis:
+Una vez creado el nodo si hay otras dependencias (librerias) es necesario agregarlas  al archivo package.xml, utilizando la siguiente sintaxis:
 
 ```
 <depend>rclcpp</depend>
@@ -392,12 +405,12 @@ La sintaxis del comando para crear un un nuevo package con Python en ROS 2 es:
 ros2 pkg create <package_name> --build-type ament_python --dependencies rclpy
 ```
 
-Ejecute lo anterior nombrando al package como ``my_package`` y el nodo como ``my_node``, de la siguiente forma
+Ejecute lo anterior nombrando ``<package_name>`` como  ``my_python_pkg``, de la siguiente forma: 
 
 ```
 ros2 pkg create my_python_pkg --build-type ament_python --dependencies rclpy
 ```
-Para algun otro ejemplo, si conoce las dependecias a utilizar agreguelas despues de ``rclpy``
+Para algun otro ejemplo, si conoce otras dependecias a utilizar agreguelas despues de ``rclpy``
 
 Para crear un nuevo nodo en un paquete de Python, ejecute lo siguiente
 ```
