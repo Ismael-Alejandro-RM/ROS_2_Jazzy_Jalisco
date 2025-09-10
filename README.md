@@ -311,7 +311,7 @@ Por último, para probar que todo está bien, ejecute el package ``turtlesim`` d
 
 ## 5 Crear un package
 
-### C++
+
 Un package es una forma de agrupar nuestros archivos (scripts, ejecutables, archivos de configuración) en ROS 2, si necesitas compartir tu código con otros, en necesario organizarlo en un package.
 
 Para crear un package diríjase a la subcarpeta ``src`` de su workspace
@@ -319,7 +319,7 @@ Para crear un package diríjase a la subcarpeta ``src`` de su workspace
 ```
 cd ~/ros2_ws/src
 ```
-
+### C++
 La sintaxis del comando para crear un un nuevo package con C++ en ROS 2 es:
 
 ``
@@ -382,11 +382,31 @@ install(TARGETS
 )
 #-------------------------------------------------------------------
 ```
-
+dode ``cpp_node`` es el nombre del ejecutable y ``my_first_node es el nombre del nodo``
 
 ### Python 
 
+La sintaxis del comando para crear un un nuevo package con Python en ROS 2 es:
 
+```
+ros2 pkg create <package_name> --build-type ament_python --dependencies rclpy
+```
+
+Ejecute lo anterior nombrando al package como ``my_package`` y el nodo como ``my_node``, de la siguiente forma
+
+```
+ros2 pkg create my_python_pkg --build-type ament_python --dependencies rclpy
+```
+Para algun otro ejemplo, si conoce las dependecias a utilizar agreguelas despues de ``rclpy``
+
+Para crear un nuevo nodo en un paquete de Python, ejecute lo siguiente
+```
+touch <name_of_node> 
+```
+Posteriormente con el siguiente comando se crea el archivo ejecutable 
+```
+chmod +x <name_of_node> 
+```
 
 Template para un nodo en Python
 ```
@@ -410,14 +430,17 @@ def main(args=None):
 if __name__ == "__main__":
     main()
 ```
+Una vez creado el nodo si se necesitan agregar más dependencias se pueden agregar al archivo package.xml, usando la siguiente sintaxis:
 
-Crear un nuevo nodo en un paquete de Python
 ```
-touch <name_of_node> 
+<depend>rclpy</depend>
 ```
-Posteriormente con el siguiente comando se crea el archivo ejecutable 
+
+Por ultimo es necesario crear el ejecutable para poder instalar el nodo, para ello, en el archivo ``setup.py``
+agregue lo siguiente en ``console_scripts``
+
 ```
-chmod +x <name_of_node> 
+"py_node = my_python_pkg.my_first_node:main", #create a executable ["name_of_executable = name_of_package.name_of_node:main", add comma for_more_excutables]
 ```
 
 ### Construir un package
