@@ -357,7 +357,36 @@ int main(int argc, char **argv)
 }
 ```
 
+Una vez creado el nodo es necesario agregar las dependencias (librerias) al archivo package.xml, utilizando la siguiente sintaxis:
+
+```
+<depend>rclcpp</depend>
+```
+
+Donde rclcpp es un ejemplo de dependencia
+
+Por último tambien agregue las dependencias y el ejecutable al archivo CMakeLists.txt, utilizando la siguiente sintaxis
+
+```
+# find dependencies
+find_package(rclcpp REQUIRED)
+
+#Añadir el ejecutable (ejemplo) y la ruta para guardarlo en la carpeta install
+#-------------------------------------------------------------------
+add_executable(cpp_node src/my_first_node.cpp)
+ament_target_dependencies(cpp_node rclcpp) #Name of executable dependencies
+
+install(TARGETS
+  cpp_node
+  DESTINATION lib/${PROJECT_NAME}
+)
+#-------------------------------------------------------------------
+```
+
+
 ### Python 
+
+
 
 Template para un nodo en Python
 ```
