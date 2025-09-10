@@ -363,7 +363,7 @@ Una vez creado el nodo es necesario agregar las dependencias (librerias) al arch
 <depend>rclcpp</depend>
 ```
 
-Donde rclcpp es un ejemplo de dependencia
+Donde ``rclcpp`` es un ejemplo de dependencia
 
 Por último tambien agregue las dependencias y el ejecutable al archivo CMakeLists.txt, utilizando la siguiente sintaxis
 
