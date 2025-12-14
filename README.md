@@ -80,6 +80,11 @@ sudo apt update && sudo apt install ros-dev-tools
 
 ### Instalar ROS 2
 
+Asegurar que tu pc soporta UTF-8
+```
+locale  # check for UTF-8
+```
+
 Primero, es necesario actualizar el repositorio apt después de haber realizado la configuración anterior, para esto, en la misma terminal ejecute el siguiente comando:
 
 ```
